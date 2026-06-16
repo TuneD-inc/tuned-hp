@@ -143,22 +143,36 @@
     /* ===== SERVICE SECTION (main) ===== */
     .service-block {
       border-top: 1px solid #000;
-      padding: 140px 0;
     }
 
-    /* Left: service index number */
+    /* Full-width service header */
+    .service-block-head {
+      padding: 40px 0 32px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .service-block-head .section-inner {
+      align-items: baseline;
+      gap: 20px;
+    }
+
     .service-num-circle {
       font-size: 11px;
       font-weight: 600;
       color: #bbb;
       letter-spacing: 0.2em;
-      margin-bottom: 14px;
+      flex-shrink: 0;
     }
 
     .service-block-title {
-      font-size: clamp(18px, 2.5vw, 26px);
-      font-weight: 700; line-height: 1.35;
-      letter-spacing: -0.01em;
+      font-size: clamp(20px, 2.8vw, 30px);
+      font-weight: 700; line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    /* Sub-content body */
+    .service-block-body {
+      padding: 60px 0 100px;
     }
 
     /* Sub-items */
@@ -223,7 +237,47 @@
     }
 
     .event-card {
-      padding: 28px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-card-thumb {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+
+    .event-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .event-card-thumb--dark {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-card-thumb--dark img {
+      object-fit: contain;
+      padding: 24px;
+    }
+
+    .event-card-body {
+      padding: 24px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .event-card-body .event-card-lp {
+      margin-top: auto;
+      align-self: flex-start;
     }
 
     .event-card + .event-card { border-left: 1px solid #ddd; }
@@ -248,6 +302,17 @@
       transition: opacity 0.2s;
     }
     .event-card-link:hover { opacity: 0.7; }
+
+    .btn-coming-soon {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      color: #aaa;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      cursor: default;
+    }
 
     .event-card-lp {
       display: inline-block;
@@ -283,13 +348,76 @@
       margin: 20px 0;
     }
 
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .event-meta-row {}
+
+    .sub-body-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .partner-logo {
+      height: 80px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .sponsor-logos {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .sponsor-logos img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .expo-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 48px;
+    }
+
+    .expo-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .expo-logos {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    .expo-logos img {
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+    }
+
     .detail-item-label {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
-      color: #aaa; margin-bottom: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
+      color: #bbb; margin-bottom: 4px;
     }
 
     .detail-item-value {
-      font-size: 14px; font-weight: 600; color: #333; line-height: 1.9;
+      font-size: 13px; font-weight: 600; color: #555; line-height: 1.7;
     }
 
     /* SNS breakdown cards (3-col) */
@@ -472,7 +600,8 @@
 
       .col-label { width: auto; margin-bottom: 20px; }
 
-      .service-block { padding: 80px 0; }
+      .service-block-head { padding: 28px 0 20px; }
+      .service-block-body { padding: 40px 0 60px; }
 
       .meta-row { grid-template-columns: 1fr; }
       .meta-col + .meta-col { border-left: none; border-top: 1px solid #ddd; }
@@ -550,11 +679,15 @@
 
   <!-- ===== SERVICE 1: 採用マーケティング ===== -->
   <section class="service-block">
-    <div class="section-inner">
-      <div class="col-label">
+    <div class="service-block-head">
+      <div class="section-inner">
         <p class="service-num-circle">01.</p>
-        <h2 class="service-block-title">採用マーケティング・<br>コンサルティング</h2>
+        <h2 class="service-block-title">採用マーケティング・コンサルティング</h2>
       </div>
+    </div>
+    <div class="service-block-body">
+    <div class="section-inner">
+      <div class="col-label"></div>
       <div class="col-content">
 
         <!-- Sub 1: RHC -->
@@ -565,14 +698,12 @@
           </div>
           <div class="meta-row">
             <div class="meta-col">
-              <p class="meta-label">サービス名</p>
               <p class="meta-name">RHC</p>
               <p class="meta-name-en">Recruitment Health Check</p>
             </div>
             <div class="meta-col">
-              <p class="meta-label">説明</p>
-              <p class="meta-desc">学生のリアルな声をもとにした、プレゼンテーションコンサルティング</p>
-              <a href="https://rhc-recruit.com" target="_blank" rel="noopener" class="text-link" style="display:inline-block; margin-top:20px;">サービスページはこちら →</a>
+              <p class="meta-desc">学生のリアルな声をもとにした、プレゼンテーション添削サービス<br>学生に伝わりやすい会社説明を添削・作成します</p>
+              <span class="btn-coming-soon" style="margin-top:20px;">サービスページ coming soon...</span>
             </div>
           </div>
         </div>
@@ -585,16 +716,27 @@
           </div>
           <div class="event-cards">
             <a href="https://suppin.netlify.app" target="_blank" rel="noopener" class="event-card event-card-link">
-              <p class="event-card-title">SUPPIN</p>
-              <p class="event-card-desc">完全招待制クローズド就活交流会</p>
-              <p class="event-card-sub">-SUPPIN-</p>
-              <p class="event-card-lp">詳細を見る →</p>
+              <div class="event-card-thumb">
+                <img src="suppin-heroのコピー.jpg.png" alt="SUPPIN">
+              </div>
+              <div class="event-card-body">
+                <p class="event-card-title">SUPPIN</p>
+                <p class="event-card-desc">完全招待制クローズド就活交流会</p>
+                <p class="event-card-sub">採用実績100%、ハイクラス人材が集まる少人数就活ラウンジ</p>
+                <p class="event-card-lp">詳細を見る →</p>
+              </div>
             </a>
-            <div class="event-card">
-              <p class="event-card-title">インターン祭</p>
-              <p class="event-card-desc">即日採用志向の対面マーケットプレイス</p>
-              <p class="event-card-sub">-インターン祭-<br>主催：株式会社ＷＣＳ</p>
-            </div>
+            <a href="https://stunning-heliotrope-a13154.netlify.app/" target="_blank" rel="noopener" class="event-card event-card-link">
+              <div class="event-card-thumb event-card-thumb--dark">
+                <img src="intern-matsuri-logo.png" alt="インターン祭">
+              </div>
+              <div class="event-card-body">
+                <p class="event-card-title">インターン祭</p>
+                <p class="event-card-desc">即日採用志向の対面マーケットプレイス</p>
+                <p class="event-card-sub">株式会社WCSが主催するキャリアイベントに協力企業として提携</p>
+                <p class="event-card-lp">詳細を見る →</p>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -604,10 +746,13 @@
             <span class="sub-num">03 —</span>
             <span class="sub-title">採用SNS/広告運用</span>
           </div>
-          <p class="sub-body">
-            株式会社WCSと提携し、採用プロモーション映像の制作・SNS運用・Meta広告配信まで<br>
-            一気通貫してサポート。質の高いクリエイティブ×運用ノウハウで広告効果を最大化します。
-          </p>
+          <div class="sub-body-row">
+            <p class="sub-body">
+              株式会社WCSと提携し、採用プロモーション映像の制作・SNS運用・Meta広告配信まで
+              一気通貫してサポート。質の高いクリエイティブ×運用ノウハウで広告効果を最大化します。
+            </p>
+            <img src="wcsロゴ.png" alt="WORLD CAREER SUMMIT" class="partner-logo">
+          </div>
           <div style="margin-top:28px;">
             <p class="breakdown-label">内訳</p>
             <div class="breakdown-cards">
@@ -632,94 +777,111 @@
 
       </div>
     </div>
+    </div><!-- /service-block-body -->
   </section>
 
   <!-- ===== SERVICE 2: イベントコンテンツ企画 ===== -->
   <section class="service-block">
-    <div class="section-inner">
-      <div class="col-label">
+    <div class="service-block-head">
+      <div class="section-inner">
         <p class="service-num-circle">02.</p>
-        <h2 class="service-block-title">イベントコンテンツ<br>企画</h2>
+        <h2 class="service-block-title">イベントコンテンツ企画</h2>
       </div>
+    </div>
+    <div class="service-block-body">
+    <div class="section-inner">
+      <div class="col-label"></div>
       <div class="col-content">
 
-        <!-- (1) 関西・大阪万博 -->
+        <!-- 事例01: 関西・大阪万博 -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num">01 —</span>
+            <span class="sub-num">事例01 —</span>
             <span class="sub-title">関西・大阪万博学生イベント</span>
           </div>
           <p class="role-label">役割：［協力］ コンテンツ企画/当日運営</p>
-          <p class="detail-heading">全国の仲間と万博を満喫！</p>
-          <p class="sub-body">集まれ！大阪・関西万博全国学生大交流プロジェクト<br>〜ミライと出会う青春の二日間〜</p>
-          <div class="detail-grid" style="margin-top:28px;">
-            <div>
+          <p class="sub-body" style="margin-bottom:20px;">集まれ！大阪・関西万博全国学生大交流プロジェクト〜ミライと出会う青春の二日間〜</p>
+          <div class="event-meta">
+            <div class="event-meta-row">
               <p class="detail-item-label">主催</p>
               <p class="detail-item-value">合同会社さいきんの若者は、学ビズby株式会社BizLabo</p>
             </div>
-            <div>
+            <div class="event-meta-row">
               <p class="detail-item-label">後援</p>
-              <p class="detail-item-value">
-                公益社団法人2025年日本国際博覧会協会<br>
-                一般社団法人観光クロスオーバー協会<br>
-                大阪観光局<br>
-                （その他協力企業・学生団体多数あり）
-              </p>
+              <p class="detail-item-value">公益社団法人2025年日本国際博覧会協会、一般社団法人観光クロスオーバー協会、大阪観光局 ほか</p>
             </div>
           </div>
-          <div class="img-placeholder" style="margin-top:28px;">
+          <div class="expo-logos">
+            <img src="公益社団法人2025年日本国際博覧会協会.png" alt="公益社団法人2025年日本国際博覧会協会">
+            <img src="一般社団法人観光クロスオーバー協会.png" alt="一般社団法人観光クロスオーバー協会">
+            <img src="大阪観光局.png" alt="大阪観光局">
+          </div>
+          <div class="img-placeholder" style="margin-top:24px;">
             <p class="img-placeholder-label">実績</p>
             <p class="img-placeholder-sub">画像・実績データを差し込み予定</p>
           </div>
         </div>
 
-        <!-- (2) 新歓祭 -->
+        <!-- 事例02: 新歓祭 -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num">02 —</span>
-            <span class="sub-title">新歓祭</span>
+            <span class="sub-num">事例02 —</span>
+            <span class="sub-title">新歓祭2026</span>
           </div>
           <p class="role-label">役割：［協力］ コンテンツ企画/当日運営</p>
-          <p class="detail-heading">新歓祭2026</p>
-          <div class="img-placeholder">
+          <div class="img-placeholder" style="margin-top:16px;">
             <p class="img-placeholder-label">実績</p>
             <p class="img-placeholder-sub">画像・実績データを差し込み予定</p>
           </div>
         </div>
 
-        <!-- (3) インターン祭 -->
+        <!-- 事例03: インターン祭 -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num">03 —</span>
+            <span class="sub-num">事例03 —</span>
             <span class="sub-title">インターン祭</span>
           </div>
           <p class="role-label">役割：［協力］ コンテンツ企画/当日運営</p>
-          <p class="detail-heading">インターン祭</p>
-          <div style="margin-top:4px;">
-            <p class="detail-item-label">主催</p>
-            <p class="detail-item-value" style="margin-bottom:20px;">株式会社WCS</p>
-            <p class="detail-item-label">コンセプト</p>
-            <p class="detail-item-value" style="font-weight:700; font-size:16px; margin-bottom:20px;">即日採用志向の対面マーケットプレイス</p>
-            <p class="detail-item-label">実績</p>
-            <p class="detail-item-value" style="font-weight:700;">2026年7月開催</p>
+          <div class="event-meta" style="margin-top:16px;">
+            <div class="event-meta-row">
+              <p class="detail-item-label">主催</p>
+              <p class="detail-item-value">株式会社WCS</p>
+              <div class="sponsor-logos">
+                <img src="wcsロゴ.png" alt="WORLD CAREER SUMMIT">
+              </div>
+            </div>
+            <div class="event-meta-row">
+              <p class="detail-item-label">コンセプト</p>
+              <p class="detail-item-value">即日採用志向の対面マーケットプレイス</p>
+            </div>
+            <div class="event-meta-row">
+              <p class="detail-item-label">実績</p>
+              <p class="detail-item-value">2026年7月開催</p>
+            </div>
           </div>
         </div>
 
       </div>
     </div>
+    </div><!-- /service-block-body -->
   </section>
 
   <!-- ===== SERVICE 3: メディア企画運営 ===== -->
   <section class="service-block">
-    <div class="section-inner">
-      <div class="col-label">
+    <div class="service-block-head">
+      <div class="section-inner">
         <p class="service-num-circle">03.</p>
         <h2 class="service-block-title">メディア企画運営</h2>
       </div>
-      <div class="col-content">
-        <div class="coming-soon-box">
-          <p class="coming-soon-label">COMING SOON</p>
-          <p class="coming-soon-sub">詳細は近日公開予定</p>
+    </div>
+    <div class="service-block-body">
+      <div class="section-inner">
+        <div class="col-label"></div>
+        <div class="col-content">
+          <div class="coming-soon-box">
+            <p class="coming-soon-label">COMING SOON</p>
+            <p class="coming-soon-sub">詳細は近日公開予定</p>
+          </div>
         </div>
       </div>
     </div>
@@ -727,11 +889,15 @@
 
   <!-- ===== SERVICE 4: 商品サービスのマーケティング ===== -->
   <section class="service-block">
-    <div class="section-inner">
-      <div class="col-label">
+    <div class="service-block-head">
+      <div class="section-inner">
         <p class="service-num-circle">04.</p>
-        <h2 class="service-block-title">商品サービスの<br>マーケティング</h2>
+        <h2 class="service-block-title">商品サービスのマーケティング</h2>
       </div>
+    </div>
+    <div class="service-block-body">
+    <div class="section-inner">
+      <div class="col-label"></div>
       <div class="col-content">
         <div class="coming-soon-box">
           <p class="coming-soon-label">COMING SOON</p>
@@ -739,6 +905,7 @@
         </div>
       </div>
     </div>
+    </div><!-- /service-block-body -->
   </section>
 
   <!-- FOOTER -->
