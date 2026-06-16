@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>TuneD.inc — 心をカタチに、みんなと仲間に。</title>
+  <meta name="description" content="TuneD.incは、関わる全ての人が自然体でいられる企業を目指し、マーケティング・ブランディングを通してあなたの想いを成果に変えます。">
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    ul, ol { list-style: none; }
+
+    /* ===== BASE ===== */
+    html {
+      width: 100%;
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.6;
+      font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック", YuGothic,
+        "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+      letter-spacing: .01em;
+      font-size: 14px;
+      color: #000;
+      background: #fff;
+      font-weight: 600;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    img { vertical-align: top; max-width: 100%; }
+
+    /* ===== PAGE BORDER FRAME ===== */
+    #border-top, #border-bottom, #border-left, #border-right {
+      position: fixed;
+      background: #000;
+      z-index: 20000;
+      pointer-events: none;
+    }
+    #border-top    { top: 0;    left: 0; right: 0;  height: 3px; }
+    #border-bottom { bottom: 0; left: 0; right: 0;  height: 3px; }
+    #border-left   { top: 0;    left: 0; bottom: 0; width: 3px;  }
+    #border-right  { top: 0;    right: 0; bottom: 0; width: 3px; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      z-index: 10000;
+      height: 72px;
+      background: rgba(255,255,255,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    /* PC nav */
+    .pc-nav ul {
+      display: flex;
+    }
+
+    .pc-nav ul li {
+      position: relative;
+    }
+
+    .pc-nav ul li + li {
+      margin-left: 32px;
+    }
+
+    .pc-nav ul li a {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .pc-nav ul li::after {
+      position: absolute;
+      content: "";
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #000;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .pc-nav ul li.is-select::after,
+    .pc-nav ul li:hover::after {
+      transform: scaleX(1);
+      transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    /* Hamburger button (SP only) */
+    .btn-nav {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 16px;
+      cursor: pointer;
+      z-index: 11001;
+      position: relative;
+    }
+
+    .btn-nav span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: #000;
+      transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform-origin: center;
+    }
+
+    .btn-nav.open span:nth-child(1) { transform: translateY(7.25px) rotate(45deg); }
+    .btn-nav.open span:nth-child(2) { opacity: 0; }
+    .btn-nav.open span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); }
+
+    /* SP nav overlay */
+    .sp-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      z-index: 11000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .sp-nav.open {
+      transform: translateX(0);
+    }
+
+    .sp-nav ul {
+      text-align: center;
+    }
+
+    .sp-nav ul li {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .sp-nav ul li + li {
+      margin-top: 32px;
+    }
+
+    .sp-nav ul li a {
+      transition: opacity 0.2s;
+    }
+
+    .sp-nav ul li a:hover { opacity: 0.5; }
+
+    /* ===== WRAP ===== */
+    #wrap {
+      background: #fff;
+    }
+
+    /* ===== HERO ===== */
+    #home {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 75px 60px 120px;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      bottom: 110px;
+      right: 60px;
+      width: 40%;
+      height: 62vh;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 0;
+    }
+
+    .hero-label,
+    .hero-heading,
+    .hero-desc,
+    .hero-buttons {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .hero-heading {
+      font-size: clamp(36px, 6.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      line-height: 2;
+      max-width: 480px;
+      margin-bottom: 52px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 16px 36px;
+      transition: opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .btn-primary:hover { opacity: 0.6; }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #000;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 15px 36px;
+      border: 1.5px solid #000;
+      transition: opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .btn-outline:hover { opacity: 0.5; }
+
+    /* ===== SECTION BASE ===== */
+    section {
+      position: relative;
+      background: #fff;
+    }
+
+    .section-inner {
+      display: flex;
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    .col-label {
+      width: 240px;
+      flex-shrink: 0;
+    }
+
+    .col-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #999;
+      letter-spacing: 0.12em;
+    }
+
+    /* ===== TEXT LINK ===== */
+    .text-link {
+      position: relative;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding-bottom: 5px;
+      transition: opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .text-link::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #000;
+    }
+
+    .text-link:hover { opacity: 0.5; }
+
+    /* ===== MISSION ===== */
+    #mission {
+      padding: 140px 0;
+      border-top: 1px solid #000;
+    }
+
+    .mission-heading {
+      font-size: clamp(26px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 48px;
+    }
+
+    .mission-body p {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      line-height: 2;
+    }
+
+    .mission-body p + p {
+      margin-top: 20px;
+    }
+
+    .mission-link {
+      margin-top: 52px;
+    }
+
+    /* ===== SERVICE ===== */
+    #service {
+      padding: 140px 0;
+      border-top: 1px solid #000;
+    }
+
+    .service-heading {
+      font-size: clamp(22px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-top: 14px;
+    }
+
+    .service-item {
+      position: relative;
+      padding: 32px 0;
+    }
+
+    .service-item::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #000;
+    }
+
+    .service-item:last-child::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #000;
+    }
+
+    .service-item-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .service-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      color: #888;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .service-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .service-sub {
+      padding-left: 44px;
+    }
+
+    .service-sub p {
+      font-size: 13px;
+      color: #666;
+      font-weight: 600;
+      line-height: 1.9;
+    }
+
+    .contents-section {
+      margin-top: 36px;
+      padding-top: 28px;
+      position: relative;
+    }
+
+    .contents-section::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #ddd;
+    }
+
+    .contents-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #aaa;
+      margin-bottom: 16px;
+    }
+
+    .contents-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 2;
+    }
+
+    .contents-list li::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ccc;
+      flex-shrink: 0;
+    }
+
+    .service-link {
+      margin-top: 44px;
+    }
+
+    /* ===== EXPLORE ===== */
+    #explore {
+      padding: 140px 0 0;
+      border-top: 1px solid #000;
+    }
+
+    .explore-heading {
+      font-size: clamp(18px, 2.4vw, 32px);
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-top: 14px;
+    }
+
+    .explore-desc {
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+      line-height: 2;
+      padding-top: 4px;
+      align-self: flex-end;
+    }
+
+    .cards {
+      display: flex;
+      width: 1000px;
+      margin: 72px auto 0;
+      border-top: 1px solid #000;
+    }
+
+    .card {
+      flex: 1;
+      padding: 44px 36px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+      cursor: pointer;
+    }
+
+    .card:hover { opacity: 0.6; }
+
+    .card + .card::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background: #000;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .card-category {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: #999;
+    }
+
+    .card-num {
+      font-size: 12px;
+      color: #ccc;
+      font-weight: 600;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      line-height: 1.9;
+      flex: 1;
+    }
+
+    .card-link {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 32px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== CTA ===== */
+    #cta {
+      margin-top: 140px;
+      position: relative;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      overflow: hidden;
+    }
+
+    .cta-bg-img {
+      position: absolute;
+      inset: 0;
+      background: #f5f0e8;
+    }
+
+    .cta-inner {
+      position: relative;
+      display: flex;
+      width: 1000px;
+      margin: 0 auto;
+      padding: 120px 0;
+      gap: 60px;
+    }
+
+    .cta-heading {
+      font-size: clamp(22px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      margin-bottom: 44px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 100px 0 60px;
+      background: #fff;
+    }
+
+    .footer-grid {
+      display: flex;
+      width: 1000px;
+      margin: 0 auto;
+      padding-bottom: 72px;
+      position: relative;
+    }
+
+    .footer-grid::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #000;
+    }
+
+    .footer-brand {
+      flex: 1.3;
+    }
+
+    .footer-brand-name {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      line-height: 2;
+    }
+
+    .footer-sitemap,
+    .footer-contact {
+      flex: 1;
+    }
+
+    .footer-col-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    .footer-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .footer-nav-links a:hover { opacity: 0.5; }
+
+    .footer-email {
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      word-break: break-all;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1000px;
+      margin: 32px auto 0;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbb;
+    }
+
+    .footer-tags {
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbb;
+      letter-spacing: 0.12em;
+    }
+
+    /* ===================================================
+       MOBILE — max-width: 768px
+    =================================================== */
+    @media screen and (max-width: 768px) {
+
+      /* Border frame thinner */
+      #border-top, #border-bottom { height: 2px; }
+      #border-left, #border-right  { width: 2px; }
+
+      /* Header */
+      header {
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      .logo { font-size: 18px; }
+
+      .pc-nav { display: none; }
+
+      .btn-nav {
+        display: flex;
+      }
+
+      .sp-nav {
+        display: flex;
+      }
+
+      /* Hero */
+      #home {
+        padding: 60px 24px 80px;
+        min-height: 100svh;
+      }
+
+      .hero-image {
+        display: block;
+        top: 68px;
+        bottom: auto;
+        right: 16px;
+        width: 44%;
+        height: 28vh;
+      }
+
+      .hero-label {
+        font-size: 11px;
+        margin-bottom: 20px;
+      }
+
+      .hero-heading {
+        margin-bottom: 20px;
+      }
+
+      .hero-desc {
+        font-size: 14px;
+        margin-bottom: 40px;
+        /* No <br> needed — wraps naturally */
+      }
+
+      .hero-desc br { display: none; }
+
+      .btn-primary,
+      .btn-outline {
+        padding: 14px 28px;
+        font-size: 13px;
+      }
+
+      /* Sections layout */
+      #mission,
+      #service,
+      #explore,
+      #cta { padding: 80px 0; }
+
+      .section-inner {
+        flex-direction: column;
+        width: auto;
+        padding: 0 24px;
+      }
+
+      .col-label {
+        width: auto;
+        margin-bottom: 20px;
+      }
+
+      /* Mission */
+      .mission-heading {
+        margin-bottom: 36px;
+      }
+
+      .mission-body p {
+        font-size: 14px;
+      }
+
+      .mission-link { margin-top: 40px; }
+
+      /* Service */
+      .service-heading { margin-top: 10px; }
+
+      .service-sub { padding-left: 36px; }
+
+      .service-title { font-size: 15px; }
+
+      .service-link { margin-top: 36px; }
+
+      /* Explore */
+      #explore {
+        padding-bottom: 0;
+      }
+
+      #explore .section-inner {
+        align-items: flex-start;
+      }
+
+      .explore-desc {
+        align-self: auto;
+        padding-top: 0;
+      }
+
+      .explore-desc br { display: none; }
+
+      .cards {
+        flex-direction: column;
+        width: auto;
+        margin: 48px 0 0;
+        border-top: none;
+      }
+
+      .card {
+        padding: 36px 24px;
+        border-top: 1px solid #000;
+      }
+
+      .card + .card::before { display: none; }
+
+      .card:last-child {
+        border-bottom: 1px solid #000;
+      }
+
+      /* CTA */
+      #cta { margin-top: 80px; }
+
+      .cta-inner {
+        flex-direction: column;
+        width: auto;
+        padding: 80px 24px;
+        gap: 24px;
+      }
+
+      .cta-heading { margin-bottom: 32px; }
+
+      /* Footer */
+      footer {
+        padding: 72px 0 40px;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+        width: auto;
+        padding: 0 24px 60px;
+        gap: 48px;
+      }
+
+      .footer-brand-name { font-size: 20px; }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        width: auto;
+        padding: 0 24px;
+        margin-top: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BORDER FRAME -->
+  <div id="border-top"></div>
+  <div id="border-bottom"></div>
+  <div id="border-left"></div>
+  <div id="border-right"></div>
+
+  <!-- HEADER -->
+  <header>
+    <p class="logo"><a href="#home">TuneD</a></p>
+
+    <!-- PC Nav -->
+    <nav class="pc-nav">
+      <ul>
+        <li class="is-select"><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="member.html">Member</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hamburger -->
+    <div class="btn-nav" id="btnNav" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- SP Nav overlay -->
+  <nav class="sp-nav" id="spNav">
+    <ul>
+      <li><a href="index.html"   class="sp-link">Home</a></li>
+      <li><a href="about.html"   class="sp-link">About Us</a></li>
+      <li><a href="service.html" class="sp-link">Service</a></li>
+      <li><a href="member.html"  class="sp-link">Member</a></li>
+      <li><a href="news.html"    class="sp-link">News</a></li>
+      <li><a href="contact.html" class="sp-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="wrap">
+
+    <!-- HERO -->
+    <section id="home">
+      <img src="hero-image.png" alt="" class="hero-image" aria-hidden="true">
+      <p class="hero-label">— HELLO, WE ARE TUNED</p>
+      <h1 class="hero-heading">心をカタチに、<br>みんなと仲間に。</h1>
+      <p class="hero-desc">
+        TuneD.incは、関わる全ての人が自然体でいられる企業を目指し、<br>
+        マーケティング・ブランディングを通してあなたの想いを成果に変えます。
+      </p>
+      <div class="hero-buttons">
+        <a href="about.html" class="btn-primary">About Us →</a>
+        <a href="service.html" class="btn-outline">Service →</a>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section id="mission">
+      <div class="section-inner">
+        <div class="col-label">
+          <span class="section-label">mission</span>
+        </div>
+        <div class="col-content">
+          <h2 class="mission-heading">人生に感激を。</h2>
+          <div class="mission-body">
+            <p>キラキラした仕事、実績、役職。<br>そして収入、ステータス。</p>
+            <p>日々忙しく追いかけるけど、</p>
+            <p>本当に欲しいのは、<br>ただ純粋な幸せ、心の充実なのかもしれない。</p>
+            <p>仲間、挑戦、余暇。<br>そして感謝、愛情。</p>
+            <p>言葉にできない、「最高〜」な気持ちを、<br>私たちは「感激」と呼びます。</p>
+            <p>関わる全ての人と、感激をともに。</p>
+            <p>それが私たちTuneDの目指す未来です。</p>
+          </div>
+          <a href="about.html" class="text-link mission-link">About Us を見る →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE -->
+    <section id="service">
+      <div class="section-inner">
+        <div class="col-label">
+          <span class="section-label">service</span>
+          <h2 class="service-heading">What<br>we do.</h2>
+        </div>
+        <div class="col-content">
+          <ul class="service-list">
+            <li class="service-item">
+              <div class="service-item-header">
+                <span class="service-num">1</span>
+                <span class="service-title">採用マーケティング・コンサルティング</span>
+              </div>
+              <div class="service-sub">
+                <p>① プレゼンテーションコンサル「RHC」</p>
+                <p>② 新卒・インターン採用イベント</p>
+                <p>③ 採用SNS/広告運用</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-item-header">
+                <span class="service-num">2</span>
+                <span class="service-title">イベントコンテンツ企画</span>
+              </div>
+              <div class="service-sub">
+                <p>（事例）</p>
+                <p>(1) 関西・大阪万博学生イベント</p>
+                <p>(2) 新歓祭</p>
+                <p>(3) インターン祭</p>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-item-header">
+                <span class="service-num">3</span>
+                <span class="service-title">メディア企画運営</span>
+              </div>
+            </li>
+            <li class="service-item">
+              <div class="service-item-header">
+                <span class="service-num">4</span>
+                <span class="service-title">商品サービスのマーケティング</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="contents-section">
+            <p class="contents-label">CONTENTS（サービスの中で運営しているコンテンツ）</p>
+            <ul class="contents-list">
+              <li>法政大学空きコマ教室｜クラスナビ</li>
+              <li>SUPPINバイト</li>
+            </ul>
+          </div>
+
+          <a href="service.html" class="text-link service-link">サービス詳細はこちら →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE -->
+    <section id="explore">
+      <div class="section-inner" style="align-items: flex-end;">
+        <div class="col-label">
+          <span class="section-label">explore</span>
+          <h2 class="explore-heading">さらに、<br>TuneDのこと。</h2>
+        </div>
+        <div class="col-content">
+          <p class="explore-desc">
+            メンバー紹介、最新のお知らせ、そしてご相談窓口へ。<br>
+            各ページで、私たちのことをもう少し詳しくお伝えします。
+          </p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <a href="member.html" class="card">
+          <div class="card-meta">
+            <span class="card-category">MEMBER</span>
+            <span class="card-num">04</span>
+          </div>
+          <h3 class="card-title">メンバー紹介</h3>
+          <p class="card-desc">TuneDを構成する仲間たちを近日公開予定。</p>
+          <span class="card-link">詳しくはこちら →</span>
+        </a>
+        <a href="news.html" class="card">
+          <div class="card-meta">
+            <span class="card-category">NEWS</span>
+            <span class="card-num">05</span>
+          </div>
+          <h3 class="card-title">お知らせ</h3>
+          <p class="card-desc">最新情報・プレスリリースを随時更新します。</p>
+          <span class="card-link">詳しくはこちら →</span>
+        </a>
+        <a href="contact.html" class="card">
+          <div class="card-meta">
+            <span class="card-category">CONTACT</span>
+            <span class="card-num">06</span>
+          </div>
+          <h3 class="card-title">お問い合わせ</h3>
+          <p class="card-desc">マーケティング・ブランディング・採用のご相談を承ります。</p>
+          <span class="card-link">詳しくはこちら →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+      <div class="cta-bg-img"></div>
+      <div class="cta-inner">
+        <div class="col-label">
+          <span class="section-label">get in touch</span>
+        </div>
+        <div class="col-content">
+          <h2 class="cta-heading">想いを、<br>成果に変える対話を。</h2>
+          <a href="mailto:tuned.inc.official@gmail.com" class="btn-primary">お問い合わせ →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-brand-name">TuneD.inc</p>
+          <p class="footer-tagline">
+            心をカタチに、みんなと仲間に。<br>
+            関わる全ての人と、感激をともに。
+          </p>
+        </div>
+        <div class="footer-sitemap">
+          <span class="footer-col-label">SITEMAP</span>
+          <ul class="footer-nav-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="member.html">Member</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <span class="footer-col-label">CONTACT</span>
+          <p class="footer-email">tuned.inc.official@gmail.com</p>
+          <a href="mailto:tuned.inc.official@gmail.com" class="text-link">Get in touch →</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 TuneD.inc All Rights Reserved.</p>
+        <p class="footer-tags">MARKETING × BRANDING × EVENTS</p>
+      </div>
+    </footer>
+
+  </div><!-- /#wrap -->
+
+  <script>
+    // ===== Hamburger =====
+    const btnNav = document.getElementById('btnNav');
+    const spNav  = document.getElementById('spNav');
+
+    btnNav.addEventListener('click', () => {
+      const isOpen = btnNav.classList.toggle('open');
+      spNav.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close on link tap
+    document.querySelectorAll('.sp-link').forEach(link => {
+      link.addEventListener('click', () => {
+        btnNav.classList.remove('open');
+        spNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ===== Active nav on scroll =====
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.pc-nav ul li');
+
+    const onScroll = () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      });
+      navItems.forEach(li => {
+        li.classList.remove('is-select');
+        const a = li.querySelector('a');
+        if (a && a.getAttribute('href') === '#' + current) {
+          li.classList.add('is-select');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  </script>
+
+</body>
+</html>
