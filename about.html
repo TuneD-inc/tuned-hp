@@ -457,6 +457,27 @@
                   transform 0.7s cubic-bezier(0.22,1,0.36,1);
     }
     .js-reveal.is-visible { opacity: 1; transform: none; }
+      /* SP Close button */
+    .sp-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 22px;
+      height: 22px;
+      background: transparent;
+      border: 1.5px solid #000;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1), transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .sp-nav.open .sp-close {
+      opacity: 1;
+      transform: scale(1);
+      transition-delay: 0.2s;
+    }
+    .sp-close:hover { opacity: 0.4; }
   </style>
 </head>
 <body>
@@ -485,7 +506,7 @@
     </div>
   </header>
 
-  <nav class="sp-nav" id="spNav">
+  <nav class="sp-nav" id="spNav"><button class="sp-close" id="spClose" aria-label="メニューを閉じる"></button>
     <ul>
       <li><a href="index.html"   class="sp-link">Home</a></li>
       <li><a href="about.html"   class="sp-link">About Us</a></li>
@@ -657,6 +678,14 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
+    var spClose = document.getElementById('spClose');
+    if (spClose) {
+      spClose.addEventListener('click', function() {
+        btnNav.classList.remove('open');
+        spNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
     document.querySelectorAll('.sp-link').forEach(link => {
       link.addEventListener('click', () => {
         btnNav.classList.remove('open');
