@@ -146,14 +146,13 @@
       padding: 140px 0;
     }
 
-    /* Left: large circle number + title */
+    /* Left: service index number */
     .service-num-circle {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid #ccc;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 700; color: #888;
-      margin-bottom: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbb;
+      letter-spacing: 0.2em;
+      margin-bottom: 14px;
     }
 
     .service-block-title {
@@ -176,10 +175,8 @@
     }
 
     .sub-num {
-      width: 26px; height: 26px; border-radius: 50%;
-      border: 1px solid #ccc;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 600; color: #888;
+      font-size: 11px; font-weight: 600; color: #bbb;
+      letter-spacing: 0.1em;
       flex-shrink: 0;
     }
 
@@ -244,6 +241,23 @@
     .event-card-sub {
       font-size: 12px; font-weight: 600; color: #888;
       line-height: 1.8;
+    }
+
+    .event-card-link {
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .event-card-link:hover { opacity: 0.7; }
+
+    .event-card-lp {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 20px;
+      background: #000;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
     }
 
     /* Detail block (主催/コンセプト/実績 etc.) */
@@ -384,8 +398,8 @@
     .contents-list li + li { margin-top: 24px; }
 
     .contents-list li::before {
-      content: ''; width: 8px; height: 8px;
-      border-radius: 50%; background: #888; flex-shrink: 0;
+      content: '—';
+      font-size: 12px; color: #aaa; flex-shrink: 0;
     }
 
     /* ===== FOOTER ===== */
@@ -529,10 +543,7 @@
       </div>
       <div class="col-content">
         <h1 class="page-hero-heading">Service.</h1>
-        <p class="page-hero-desc">
-          あなたの想いを、<br>
-          成果に変えるために。
-        </p>
+        <p class="page-hero-desc">あなたの想いを、成果に変えるために。</p>
       </div>
     </div>
   </section>
@@ -541,7 +552,7 @@
   <section class="service-block">
     <div class="section-inner">
       <div class="col-label">
-        <div class="service-num-circle">1</div>
+        <p class="service-num-circle">01.</p>
         <h2 class="service-block-title">採用マーケティング・<br>コンサルティング</h2>
       </div>
       <div class="col-content">
@@ -549,7 +560,7 @@
         <!-- Sub 1: RHC -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num">①</span>
+            <span class="sub-num">01 —</span>
             <span class="sub-title">プレゼンテーションコンサル「RHC」</span>
           </div>
           <div class="meta-row">
@@ -569,15 +580,16 @@
         <!-- Sub 2: 採用イベント -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num">②</span>
+            <span class="sub-num">02 —</span>
             <span class="sub-title">新卒・インターン採用イベント</span>
           </div>
           <div class="event-cards">
-            <div class="event-card">
+            <a href="https://suppin.netlify.app" target="_blank" rel="noopener" class="event-card event-card-link">
               <p class="event-card-title">SUPPIN</p>
               <p class="event-card-desc">完全招待制クローズド就活交流会</p>
               <p class="event-card-sub">-SUPPIN-</p>
-            </div>
+              <p class="event-card-lp">詳細を見る →</p>
+            </a>
             <div class="event-card">
               <p class="event-card-title">インターン祭</p>
               <p class="event-card-desc">即日採用志向の対面マーケットプレイス</p>
@@ -589,30 +601,28 @@
         <!-- Sub 3: SNS運用 -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num">③</span>
+            <span class="sub-num">03 —</span>
             <span class="sub-title">採用SNS/広告運用</span>
           </div>
           <p class="sub-body">
-            株式会社WCSと提携し、採用プロモーション映像の制作 → SNS運用 → Meta広告配信まで一気通貫してサポート。
-          </p>
-          <p class="sub-body" style="margin-top:12px;">
-            質の高いクリエイティブ×運用ノウハウで広告効果を最大化します。
+            株式会社WCSと提携し、採用プロモーション映像の制作・SNS運用・Meta広告配信まで<br>
+            一気通貫してサポート。質の高いクリエイティブ×運用ノウハウで広告効果を最大化します。
           </p>
           <div style="margin-top:28px;">
             <p class="breakdown-label">内訳</p>
             <div class="breakdown-cards">
               <div class="breakdown-card">
-                <p class="breakdown-num">(1)</p>
+                <p class="breakdown-num">01.</p>
                 <p class="breakdown-title">採用プロモーション映像</p>
                 <p class="breakdown-desc">撮影・編集・制作</p>
               </div>
               <div class="breakdown-card">
-                <p class="breakdown-num">(2)</p>
+                <p class="breakdown-num">02.</p>
                 <p class="breakdown-title">採用SNS運用</p>
                 <p class="breakdown-desc">アカウント設計・投稿運用</p>
               </div>
               <div class="breakdown-card">
-                <p class="breakdown-num">(3)</p>
+                <p class="breakdown-num">03.</p>
                 <p class="breakdown-title">メタ広告運用</p>
                 <p class="breakdown-desc">設計・配信・改善</p>
               </div>
@@ -628,7 +638,7 @@
   <section class="service-block">
     <div class="section-inner">
       <div class="col-label">
-        <div class="service-num-circle">2</div>
+        <p class="service-num-circle">02.</p>
         <h2 class="service-block-title">イベントコンテンツ<br>企画</h2>
       </div>
       <div class="col-content">
@@ -636,15 +646,12 @@
         <!-- (1) 関西・大阪万博 -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num" style="border-radius:0; width:auto; height:auto; border:none; font-size:13px; color:#888;">(1)</span>
+            <span class="sub-num">01 —</span>
             <span class="sub-title">関西・大阪万博学生イベント</span>
           </div>
           <p class="role-label">役割：［協力］ コンテンツ企画/当日運営</p>
           <p class="detail-heading">全国の仲間と万博を満喫！</p>
-          <p class="sub-body">
-            集まれ！大阪・関西万博全国学生大交流プロジェクト<br>
-            ～ミライと出会う青春の二日間～
-          </p>
+          <p class="sub-body">集まれ！大阪・関西万博全国学生大交流プロジェクト<br>〜ミライと出会う青春の二日間〜</p>
           <div class="detail-grid" style="margin-top:28px;">
             <div>
               <p class="detail-item-label">主催</p>
@@ -669,7 +676,7 @@
         <!-- (2) 新歓祭 -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num" style="border-radius:0; width:auto; height:auto; border:none; font-size:13px; color:#888;">(2)</span>
+            <span class="sub-num">02 —</span>
             <span class="sub-title">新歓祭</span>
           </div>
           <p class="role-label">役割：［協力］ コンテンツ企画/当日運営</p>
@@ -683,7 +690,7 @@
         <!-- (3) インターン祭 -->
         <div class="sub-item">
           <div class="sub-item-header">
-            <span class="sub-num" style="border-radius:0; width:auto; height:auto; border:none; font-size:13px; color:#888;">(3)</span>
+            <span class="sub-num">03 —</span>
             <span class="sub-title">インターン祭</span>
           </div>
           <p class="role-label">役割：［協力］ コンテンツ企画/当日運営</p>
@@ -706,7 +713,7 @@
   <section class="service-block">
     <div class="section-inner">
       <div class="col-label">
-        <div class="service-num-circle">3</div>
+        <p class="service-num-circle">03.</p>
         <h2 class="service-block-title">メディア企画運営</h2>
       </div>
       <div class="col-content">
@@ -722,7 +729,7 @@
   <section class="service-block">
     <div class="section-inner">
       <div class="col-label">
-        <div class="service-num-circle">4</div>
+        <p class="service-num-circle">04.</p>
         <h2 class="service-block-title">商品サービスの<br>マーケティング</h2>
       </div>
       <div class="col-content">
@@ -730,22 +737,6 @@
           <p class="coming-soon-label">COMING SOON</p>
           <p class="coming-soon-sub">詳細は近日公開予定</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTENTS ===== -->
-  <section id="contents">
-    <div class="contents-bg"></div>
-    <div class="contents-inner">
-      <div class="col-label">
-        <span class="section-label">contents</span>
-      </div>
-      <div class="col-content">
-        <ul class="contents-list">
-          <li>法政大学空きコマ教室｜クラスナビ</li>
-          <li>SUPPINバイト</li>
-        </ul>
       </div>
     </div>
   </section>

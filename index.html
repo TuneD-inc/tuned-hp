@@ -376,67 +376,30 @@
     }
 
     .service-item {
-      position: relative;
-      padding: 32px 0;
-    }
-
-    .service-item::before {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: #000;
-    }
-
-    .service-item:last-child::after {
-      position: absolute;
-      content: "";
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: #000;
-    }
-
-    .service-item-header {
       display: flex;
-      align-items: flex-start;
-      gap: 18px;
-      margin-bottom: 14px;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .service-item:first-child {
+      border-top: 1px solid #e8e8e8;
     }
 
     .service-num {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 1px solid #ccc;
-      color: #888;
       font-size: 11px;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: #bbb;
+      letter-spacing: 0.15em;
       flex-shrink: 0;
-      margin-top: 3px;
+      width: 28px;
     }
 
     .service-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       line-height: 1.5;
-    }
-
-    .service-sub {
-      padding-left: 44px;
-    }
-
-    .service-sub p {
-      font-size: 13px;
-      color: #666;
-      font-weight: 600;
-      line-height: 1.9;
     }
 
     .contents-section {
@@ -980,49 +943,22 @@
         <div class="col-content">
           <ul class="service-list">
             <li class="service-item">
-              <div class="service-item-header">
-                <span class="service-num">1</span>
-                <span class="service-title">採用マーケティング・コンサルティング</span>
-              </div>
-              <div class="service-sub">
-                <p>① プレゼンテーションコンサル「RHC」</p>
-                <p>② 新卒・インターン採用イベント</p>
-                <p>③ 採用SNS/広告運用</p>
-              </div>
+              <span class="service-num">01.</span>
+              <span class="service-title">採用マーケティング・コンサルティング</span>
             </li>
             <li class="service-item">
-              <div class="service-item-header">
-                <span class="service-num">2</span>
-                <span class="service-title">イベントコンテンツ企画</span>
-              </div>
-              <div class="service-sub">
-                <p>（事例）</p>
-                <p>(1) 関西・大阪万博学生イベント</p>
-                <p>(2) 新歓祭</p>
-                <p>(3) インターン祭</p>
-              </div>
+              <span class="service-num">02.</span>
+              <span class="service-title">イベントコンテンツ企画</span>
             </li>
             <li class="service-item">
-              <div class="service-item-header">
-                <span class="service-num">3</span>
-                <span class="service-title">メディア企画運営</span>
-              </div>
+              <span class="service-num">03.</span>
+              <span class="service-title">メディア企画運営</span>
             </li>
             <li class="service-item">
-              <div class="service-item-header">
-                <span class="service-num">4</span>
-                <span class="service-title">商品サービスのマーケティング</span>
-              </div>
+              <span class="service-num">04.</span>
+              <span class="service-title">商品サービスのマーケティング</span>
             </li>
           </ul>
-
-          <div class="contents-section">
-            <p class="contents-label">CONTENTS（サービスの中で運営しているコンテンツ）</p>
-            <ul class="contents-list">
-              <li>法政大学空きコマ教室｜クラスナビ</li>
-              <li>SUPPINバイト</li>
-            </ul>
-          </div>
 
           <a href="service.html" class="text-link service-link">サービス詳細はこちら →</a>
         </div>
@@ -1051,7 +987,7 @@
             <span class="card-num">04</span>
           </div>
           <h3 class="card-title">メンバー紹介</h3>
-          <p class="card-desc">TuneDを構成する仲間たちを近日公開予定。</p>
+          <p class="card-desc">TuneDを構成するメンバーを紹介しています。</p>
           <span class="card-link">詳しくはこちら →</span>
         </a>
         <a href="news.html" class="card">
