@@ -113,10 +113,62 @@
     }
     .page-hero-desc {
       font-size: 15px; font-weight: 600; color: #444; line-height: 2;
-      margin-bottom: 40px;
     }
-    .coming-line { width: 40px; height: 1px; background: #ccc; margin-bottom: 16px; }
-    .coming-label { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; color: #bbb; }
+
+    /* MEMBERS */
+    #members {
+      padding: 140px 0;
+      border-top: 1px solid #000;
+    }
+
+    .member-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 64px 48px;
+    }
+
+    .member-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .member-photo-wrap {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .member-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .member-role {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .member-name-ja {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .member-name-en {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      letter-spacing: 0.05em;
+    }
 
     /* TEXT LINK */
     .text-link {
@@ -171,6 +223,7 @@
       #page-hero { padding: 120px 0 80px; }
       .section-inner { flex-direction: column; width: auto; padding: 0 24px; }
       .col-label { width: auto; margin-bottom: 20px; }
+      .member-photo-wrap { width: 160px; height: 160px; }
       footer { margin-top: 80px; padding: 72px 0 40px; }
       .footer-grid { flex-direction: column; width: auto; padding: 0 24px 60px; gap: 48px; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; width: auto; padding: 0 24px; margin-top: 28px; }
@@ -218,9 +271,35 @@
       </div>
       <div class="col-content">
         <h1 class="page-hero-heading">Member.</h1>
-        <p class="page-hero-desc">メンバー紹介は近日公開予定です。</p>
-        <div class="coming-line"></div>
-        <p class="coming-label">COMING SOON</p>
+        <p class="page-hero-desc">TuneDを構成するメンバーを紹介します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="members">
+    <div class="section-inner">
+      <div class="col-label">
+        <span class="section-label">TEAM</span>
+      </div>
+      <div class="col-content">
+        <div class="member-grid">
+          <div class="member-card">
+            <div class="member-photo-wrap">
+              <img src="member-nakada.jpg" alt="中田啓央" class="member-photo">
+            </div>
+            <p class="member-role">CEO</p>
+            <p class="member-name-ja">中田啓央</p>
+            <p class="member-name-en">nakada hirohisa</p>
+          </div>
+          <div class="member-card">
+            <div class="member-photo-wrap">
+              <img src="member-shiomi.jpg" alt="塩見亘毅" class="member-photo" style="object-position: center 20%;">
+            </div>
+            <p class="member-role">COO</p>
+            <p class="member-name-ja">塩見亘毅</p>
+            <p class="member-name-en">shiomi koki</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
