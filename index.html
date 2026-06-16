@@ -706,17 +706,26 @@
 
       /* Hero */
       #home {
-        padding: 60px 24px 80px;
+        padding: 0 0 80px;
         min-height: 100svh;
+        justify-content: flex-start;
       }
 
       .hero-image {
+        position: static;
         display: block;
-        top: 68px;
-        bottom: auto;
-        right: 16px;
-        width: 44%;
-        height: 28vh;
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        object-position: center 55%;
+        margin-bottom: 32px;
+      }
+
+      .hero-label,
+      .hero-heading,
+      .hero-desc,
+      .hero-buttons {
+        padding: 0 24px;
       }
 
       .hero-label {
