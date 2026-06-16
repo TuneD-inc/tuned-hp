@@ -264,6 +264,58 @@
       letter-spacing: 0.15em;
     }
 
+    /* ===== COMPANY ===== */
+    #company {
+      padding: 140px 0;
+      border-top: 1px solid #000;
+    }
+
+    .company-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .company-table tr {
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .company-table tr:first-child {
+      border-top: 1px solid #e8e8e8;
+    }
+
+    .company-table th {
+      width: 160px;
+      padding: 20px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: #999;
+      letter-spacing: 0.1em;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .company-table td {
+      padding: 20px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.8;
+    }
+
+    /* ===== MAP ===== */
+    #map {
+      padding: 140px 0;
+      border-top: 1px solid #000;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 400px;
+      border: none;
+      display: block;
+      margin-top: 40px;
+    }
+
     /* ===== FOOTER ===== */
     footer { padding: 100px 0 60px; background: #fff; border-top: 1px solid #000; margin-top: 0; }
 
@@ -360,7 +412,10 @@
 
       .col-label { width: auto; margin-bottom: 20px; }
 
-      #mission, #vision { padding: 80px 0; }
+      #mission, #vision, #company, #map { padding: 80px 0; }
+      .map-embed { height: 280px; }
+      .company-table th { width: 100px; font-size: 11px; }
+      .company-table td { font-size: 14px; }
 
       .page-hero-heading { margin-bottom: 28px; }
       .page-hero-desc { font-size: 14px; }
@@ -489,6 +544,64 @@
   <!-- PHOTO -->
   <section id="photo">
     <div class="photo-placeholder">PHOTO</div>
+  </section>
+
+  <!-- COMPANY -->
+  <section id="company">
+    <div class="section-inner">
+      <div class="col-label">
+        <span class="section-label">company</span>
+        <span class="section-num">0 3</span>
+      </div>
+      <div class="col-content">
+        <table class="company-table">
+          <tr>
+            <th>会社名</th>
+            <td>株式会社TuneD</td>
+          </tr>
+          <tr>
+            <th>設立</th>
+            <td>2024年12月25日</td>
+          </tr>
+          <tr>
+            <th>代表者</th>
+            <td>代表取締役 中田啓央</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>東京都新宿区新宿1丁目36番7号<br>新宿内野ビルII 7F</td>
+          </tr>
+          <tr>
+            <th>事業内容</th>
+            <td>
+              採用マーケティング支援<br>
+              イベントの企画・運営・管理<br>
+              メディアの企画・運営<br>
+              各種商品・サービスのマーケティング支援
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="map">
+    <div class="section-inner">
+      <div class="col-label">
+        <span class="section-label">access</span>
+      </div>
+      <div class="col-content">
+        <iframe
+          class="map-embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.4342181340035!2d139.7076767757882!3d35.69093087258401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d0056413937%3A0xb47b7853c70bfa6f!2z5qCq5byP5Lya56S-VHVuZUQ!5e0!3m2!1sja!2sjp!4v1781604169295!5m2!1sja!2sjp"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="TuneD.inc 所在地">
+        </iframe>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
