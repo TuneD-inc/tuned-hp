@@ -230,6 +230,22 @@
       .footer-grid { flex-direction: column; width: auto; padding: 0 24px 60px; gap: 48px; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; width: auto; padding: 0 24px; margin-top: 28px; }
     }
+
+    /* ===== ANIMATIONS ===== */
+    body { animation: pageIn 0.45s ease both; }
+    @keyframes pageIn { from { opacity: 0; } }
+
+    .js-reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .js-reveal.is-visible { opacity: 1; transform: none; }
+
+    .member-photo-wrap { overflow: hidden; }
+    .member-photo { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .member-card:hover .member-photo { transform: scale(1.04); }
   </style>
 </head>
 <body>
@@ -346,6 +362,23 @@
       spNav.classList.remove('open');
       document.body.style.overflow = '';
     }));
+
+    (function(){
+      document.querySelectorAll('.member-card').forEach(function(el){
+        el.classList.add('js-reveal');
+      });
+      document.querySelectorAll('.member-grid').forEach(function(p){
+        [].slice.call(p.children).forEach(function(c,i){
+          c.style.transitionDelay = (i * 0.12) + 's';
+        });
+      });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.js-reveal').forEach(function(el){ io.observe(el); });
+    })();
   </script>
 </body>
 </html>

@@ -536,10 +536,20 @@
     }
 
     .card-link {
+      display: inline-block;
       font-size: 13px;
       font-weight: 600;
       margin-top: 32px;
       letter-spacing: 0.03em;
+      padding: 10px 20px;
+      border: 1.5px solid #000;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .card:hover .card-link {
+      background: #000;
+      color: #fff;
     }
 
     /* ===== CTA ===== */
@@ -857,6 +867,30 @@
         margin-top: 28px;
       }
     }
+
+    /* ===== ANIMATIONS ===== */
+    body { animation: pageIn 0.45s ease both; }
+    @keyframes pageIn { from { opacity: 0; } }
+
+    /* Hero entrance stagger */
+    .hero-label   { animation: heroUp 0.65s 0.10s cubic-bezier(0.22,1,0.36,1) both; }
+    .hero-heading { animation: heroUp 0.70s 0.22s cubic-bezier(0.22,1,0.36,1) both; }
+    .hero-desc    { animation: heroUp 0.70s 0.36s cubic-bezier(0.22,1,0.36,1) both; }
+    .hero-buttons { animation: heroUp 0.70s 0.48s cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes heroUp { from { opacity:0; transform:translateY(16px); } }
+
+    /* Scroll reveal */
+    .js-reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .js-reveal.is-visible { opacity: 1; transform: none; }
+
+    /* Hover — cards */
+    .card { transition: transform 0.25s ease; }
+    .card:hover { transform: translateY(-3px); }
   </style>
 </head>
 <body>
@@ -1106,6 +1140,24 @@
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Scroll reveal
+    (function(){
+      document.querySelectorAll('.card, .service-item').forEach(function(el){
+        el.classList.add('js-reveal');
+      });
+      document.querySelectorAll('.cards').forEach(function(p){
+        [].slice.call(p.children).forEach(function(c,i){
+          c.style.transitionDelay = (i * 0.1) + 's';
+        });
+      });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      document.querySelectorAll('.js-reveal').forEach(function(el){ io.observe(el); });
+    })();
   </script>
 
 </body>
