@@ -303,6 +303,90 @@
     }
     .event-card-link:hover { opacity: 0.7; }
 
+
+    /* ===== RHC Preview Banner ===== */
+    .rhc-preview-banner {
+      display: block;
+      margin-top: 0;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      padding: 36px 40px 28px;
+      transition: opacity 0.25s;
+      position: relative;
+    }
+    .rhc-preview-banner:hover { opacity: 0.82; }
+
+    .rhc-banner-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 28px;
+    }
+
+    .rhc-banner-left { flex: 1; }
+
+    .rhc-banner-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .rhc-banner-heading {
+      font-size: clamp(15px, 1.8vw, 20px);
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .rhc-banner-stats {
+      display: flex;
+      gap: 36px;
+      flex-shrink: 0;
+    }
+
+    .rhc-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .rhc-stat-num {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .rhc-stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #888;
+      letter-spacing: 0.05em;
+    }
+
+    .rhc-banner-cta {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #666;
+      border-top: 1px solid #222;
+      padding-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .rhc-banner-inner { flex-direction: column; gap: 24px; }
+      .rhc-banner-stats { justify-content: flex-start; }
+      .rhc-stat { align-items: flex-start; }
+      .rhc-preview-banner { padding: 24px 20px 20px; }
+    }
+
     .btn-coming-soon {
       display: inline-block;
       padding: 10px 20px;
@@ -710,7 +794,6 @@
       </div>
       <div class="col-content">
         <h1 class="page-hero-heading">Service.</h1>
-        <p class="page-hero-desc">あなたの想いを、成果に変えるために。</p>
       </div>
     </div>
   </section>
@@ -744,6 +827,29 @@
               <a href="https://rhc.tunedinc.jp/" target="_blank" class="text-link" style="margin-top:20px; display:inline-block;">サービスページはこちら</a>
             </div>
           </div>
+          <a href="https://rhc.tunedinc.jp/" target="_blank" class="rhc-preview-banner">
+            <div class="rhc-banner-inner">
+              <div class="rhc-banner-left">
+                <p class="rhc-banner-label">Recruitment Health Check</p>
+                <p class="rhc-banner-heading">採用説明の伝わり方を、<br>学生のリアルな声で変える。</p>
+              </div>
+              <div class="rhc-banner-stats">
+                <div class="rhc-stat">
+                  <span class="rhc-stat-num">最短10日</span>
+                  <span class="rhc-stat-label">打ち合わせから納品まで</span>
+                </div>
+                <div class="rhc-stat">
+                  <span class="rhc-stat-num">5時間</span>
+                  <span class="rhc-stat-label">担当者の合計工数</span>
+                </div>
+                <div class="rhc-stat">
+                  <span class="rhc-stat-num">100%</span>
+                  <span class="rhc-stat-label">採用成功率</span>
+                </div>
+              </div>
+            </div>
+            <span class="rhc-banner-cta">サービスページを見る →</span>
+          </a>
         </div>
 
         <!-- Sub 2: 採用イベント -->
