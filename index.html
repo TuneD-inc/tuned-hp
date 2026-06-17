@@ -716,8 +716,9 @@
 
       /* Hero */
       #home {
-        padding: 60px 0 80px;
-        min-height: 100svh;
+        padding: 60px 0 60px;
+        min-height: 80svh;
+        gap: 0;
         justify-content: flex-start;
       }
 
@@ -728,37 +729,45 @@
         height: 220px;
         object-fit: cover;
         object-position: center 55%;
-        margin-bottom: 32px;
+        margin-top: 44px;
+        margin-bottom: 60px;
       }
 
       .hero-label,
       .hero-heading,
       .hero-desc,
       .hero-buttons {
-        padding: 0 32px;
+        padding: 0 40px;
       }
 
       .hero-label {
-        font-size: 11px;
-        margin-bottom: 20px;
+        font-size: 10px;
+        margin-top: auto;
+        margin-bottom: 16px;
       }
 
       .hero-heading {
-        margin-bottom: 20px;
+        font-size: 19px;
+        white-space: nowrap;
+        letter-spacing: -0.01em;
+        margin-bottom: 32px;
       }
 
+      .hero-heading br { display: none; }
+
       .hero-desc {
-        font-size: 14px;
-        margin-bottom: 40px;
-        /* No <br> needed — wraps naturally */
+        font-size: 11px;
+        line-height: 1.9;
+        margin-bottom: 36px;
+        color: #444;
       }
 
       .hero-desc br { display: none; }
 
       .btn-primary,
       .btn-outline {
-        padding: 14px 28px;
-        font-size: 13px;
+        padding: 11px 22px;
+        font-size: 12px;
       }
 
       /* Sections layout */
@@ -779,15 +788,27 @@
       }
 
       /* Mission */
+      #mission .section-inner {
+        padding: 0 56px;
+      }
+
       .mission-heading {
-        margin-bottom: 36px;
+        font-size: 24px;
+        margin-bottom: 44px;
+        letter-spacing: -0.01em;
       }
 
       .mission-body p {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 2.1;
+        color: #111;
       }
 
-      .mission-link { margin-top: 40px; }
+      .mission-body p + p {
+        margin-top: 16px;
+      }
+
+      .mission-link { margin-top: 40px; font-size: 12px; }
 
       /* Service */
       .service-heading { margin-top: 10px; }
