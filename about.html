@@ -403,6 +403,19 @@
       .sp-nav { display: flex; }
 
       #page-hero { padding: 120px 0 80px; }
+      /* Page hero typography - mobile */
+      #page-hero .section-inner { padding: 0 40px; }
+      .page-hero-heading {
+        font-size: 32px;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+      }
+      .page-hero-desc {
+        font-size: 12px;
+        line-height: 1.9;
+        color: #444;
+      }
+
 
       .section-inner {
         flex-direction: column;
@@ -444,6 +457,20 @@
         padding: 0 24px;
         margin-top: 28px;
       }
+    
+      
+      /* === Body content mobile typography === */
+      .section-inner { padding: 0 40px !important; }
+      .body-text p { font-size: 11px !important; line-height: 2; }
+      .mission-heading { font-size: 18px !important; margin-bottom: 36px; }
+      .vision-heading { font-size: 16px !important; margin-bottom: 36px; }
+      .company-table th { font-size: 10px !important; }
+      .company-table td { font-size: 11px !important; }
+      /* === Footer mobile typography === */
+      .footer-brand-name { font-size: 15px !important; }
+      .footer-tagline { font-size: 10px !important; line-height: 1.9; }
+      .footer-nav-links a { font-size: 12px !important; }
+      .footer-email { font-size: 10px !important; }
     }
 
     /* ===== ANIMATIONS ===== */
@@ -477,6 +504,23 @@
       transform: scale(1);
       transition-delay: 0.2s;
     }
+
+      /* === Mobile typography overhaul === */
+      #page-hero { padding: 100px 0 60px; }
+      #page-hero .section-inner { padding: 0 40px; }
+      .page-hero-heading {
+        font-size: 22px !important;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+        margin-bottom: 16px;
+      }
+      .page-hero-desc {
+        font-size: 11px !important;
+        line-height: 1.9;
+        color: #555;
+      }
+
+
     .sp-close:hover { opacity: 0.4; }
   </style>
 </head>

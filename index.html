@@ -779,7 +779,7 @@
       .section-inner {
         flex-direction: column;
         width: auto;
-        padding: 0 32px;
+        padding: 0 40px;
       }
 
       .col-label {
@@ -826,7 +826,10 @@
 
       #explore .section-inner {
         align-items: flex-start !important;
+        padding: 0 40px;
       }
+
+      .explore-heading { font-size: 16px; }
 
       .explore-desc {
         align-self: auto;
@@ -843,9 +846,13 @@
       }
 
       .card {
-        padding: 36px 24px;
+        padding: 32px 40px;
         border-top: 1px solid #000;
       }
+
+      .card-title { font-size: 14px; letter-spacing: -0.01em; margin-bottom: 10px; }
+      .card-desc { font-size: 11px; line-height: 1.9; }
+      .card-link { font-size: 11px; padding: 8px 16px; margin-top: 24px; }
 
       .card + .card::before { display: none; }
 
@@ -859,11 +866,15 @@
       .cta-inner {
         flex-direction: column;
         width: auto;
-        padding: 80px 24px;
+        padding: 80px 40px;
         gap: 24px;
       }
 
-      .cta-heading { margin-bottom: 32px; }
+      .cta-heading {
+        font-size: 18px !important;
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
 
       /* Footer */
       footer {
@@ -877,7 +888,11 @@
         gap: 48px;
       }
 
-      .footer-brand-name { font-size: 20px; }
+      /* === Footer mobile typography === */
+      .footer-brand-name { font-size: 15px !important; }
+      .footer-tagline { font-size: 10px !important; line-height: 1.9; }
+      .footer-nav-links a { font-size: 12px !important; }
+      .footer-email { font-size: 10px !important; }
 
       .footer-bottom {
         flex-direction: column;
