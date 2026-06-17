@@ -716,8 +716,8 @@
 
       /* Hero */
       #home {
-        padding: 60px 0 60px;
-        min-height: 80svh;
+        padding: 60px 0 80px;
+        min-height: 88svh;
         gap: 0;
         justify-content: flex-start;
       }
@@ -933,6 +933,37 @@
       transition-delay: 0.2s;
     }
     .sp-close:hover { opacity: 0.4; }
+
+    /* ===== Scroll hint (mobile only) ===== */
+    .scroll-hint { display: none; }
+
+    @media (max-width: 768px) {
+      .scroll-hint {
+        display: block;
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 36px;
+        background: #e0e0e0;
+        overflow: hidden;
+      }
+      .scroll-hint::after {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: #aaa;
+        animation: scrollDrop 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes scrollDrop {
+        0%   { top: -50%; }
+        100% { top: 110%; }
+      }
+    }
   </style>
 </head>
 <body>
@@ -994,6 +1025,7 @@
         <a href="about.html" class="btn-primary">About Us →</a>
         <a href="service.html" class="btn-outline">Service →</a>
       </div>
+      <span class="scroll-hint" aria-hidden="true"></span>
     </section>
 
     <!-- MISSION -->
